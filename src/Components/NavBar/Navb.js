@@ -2,14 +2,15 @@ import React from 'react'
 import { Navbar, Nav, Container,NavDropdown, Offcanvas} from 'react-bootstrap';
 const Navb = () => {
     return (
-      <Navbar bg="light" expand={false}>
+      <Navbar bg='light' expand={false}>
   <Container fluid>
-    <Navbar.Brand href="#">NASA OBSERVER</Navbar.Brand>
+    <Navbar.Brand style={{fontWeight:'bolder'}} href="#">NASA OBSERVER</Navbar.Brand>
     <Navbar.Toggle aria-controls="offcanvasNavbar" />
     <Navbar.Offcanvas
       id="offcanvasNavbar"
       aria-labelledby="offcanvasNavbarLabel"
       placement="end"
+      
     >
       <Offcanvas.Header closeButton>
         <Offcanvas.Title id="offcanvasNavbarLabel">NASA OBSERVER</Offcanvas.Title>
@@ -19,7 +20,7 @@ const Navb = () => {
           <Nav.Link href="#action1">Home</Nav.Link>
           <Nav.Link href="#action2">About</Nav.Link>
 
-          <NavDropdown title="Earth Events" id="offcanvasNavbarDropdown">
+          <NavDropdown title="Events Category" id="offcanvasNavbarDropdown">
             <NavDropdown.Item href="#action3">Wild Fire</NavDropdown.Item>
             <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
             
