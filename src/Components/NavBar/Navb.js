@@ -17,8 +17,8 @@ const Navb = () => {
       </Offcanvas.Header>
       <Offcanvas.Body>
         <Nav className="justify-content-end flex-grow-1 pe-3">
-          <Nav.Link href="#action1">Home</Nav.Link>
-          <Nav.Link href="#action2">About</Nav.Link>
+          
+          <Nav.Link href="./About">About</Nav.Link>
 
           <NavDropdown title="Events Category" id="offcanvasNavbarDropdown">
             <NavDropdown.Item href="#action3">Wild Fire</NavDropdown.Item>
