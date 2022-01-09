@@ -1,6 +1,8 @@
 import React from "react";
 import GoogleMapReact from "google-map-react";
 import './Map.css'
+import Locaionmarker from "../LocationMarker/Locaionmarker";
+
 
 const Map = ({ center, zoom }) => {
   return (
@@ -10,6 +12,7 @@ const Map = ({ center, zoom }) => {
         defaultCenter={center}
         defaultZoom={zoom}
       ></GoogleMapReact>
+      <Locaionmarker lat={center.lat} lng={center.lng}/>
     </div>
   );
 };
