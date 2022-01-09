@@ -1,55 +1,31 @@
-import React, { useState,useEffect } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import Navb from "./Components/NavBar/Navb";
-import Map from "./Components/GoogleMap/Map";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import About from "./Components/NavBar/About";
-import axios from "axios"
+import { useState, useEffect } from 'react'
+import Map from './components/Map'
+import Loader from './components/Loader'
+import Header from './components/Header'
 
+function App() {
+  const [eventData, setEventData] = useState([])
+  const [loading, setLoading] = useState(false)
 
-const App = () => {
-const [nasadata, setNasaData] = useState()
-const [loader,setLoader] = useState(false)
+  useEffect(() => {
+    const fetchEvents = async () => {
+      setLoading(true)
+      const res = await fetch('https://eonet.sci.gsfc.nasa.gov/api/v2.1/events')
+      const { events } = await res.json()
 
-const fetchData = async ()=>{
+      setEventData(events)
+      setLoading(false)
+    }
 
-  try{
-    setLoader(true)
-    const res= await axios.get("https://eonet.sci.gsfc.nasa.gov/api/v2.1/events")
-    console.log(res.data)
-    setNasaData(res.data)
-    setLoader(false)
-  
-
-
-  }catch(error){
-
-      console.log('unable to fetch data', error)
-  
-  }
- 
-}
-
-useEffect(()=>{
-
-    
-fetchData();
-
-},[])
+    fetchEvents()
+  }, [])
 
   return (
-    <>
-      <Navb />
-      <Router>
-        <Routes>
-          <Route path="/about" element={<About/>}/>
-          <Route path="/wildfire" element={<Map/>}/>
-          
-
-        </Routes>
-      </Router>
-    </>
+    <div>
+      <Header />
+      { !loading ? <Map eventData={eventData} /> : <Loader /> }
+    </div>
   );
-};
+}
 
 export default App;
