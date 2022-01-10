@@ -22,6 +22,8 @@ const Map = ({ eventData, center, zoom }) => {
                 bootstrapURLKeys={{ key: 'AIzaSyDIlGwn1DUIHh-K87v7tNY0_mOw6qeNgF8' }}
                 defaultCenter={ center }
                 defaultZoom={ zoom }
+                onClick={()=>setLocationInfo(null)}
+                onDrag={()=>setLocationInfo(null)}
             >
                 {markers}
             </GoogleMapReact>
